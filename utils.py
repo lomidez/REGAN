@@ -182,7 +182,9 @@ def sample_one_hot(theta_prime, batch_size, seq_len, vocab_size, use_cuda):
 
     # input theta_prime dims = (batch_size * seq_len) x vocab_size
     theta_prime = theta_prime.view(batch_size, seq_len, vocab_size)
-    samples = Variable(torch.Tensor(seq_len, batch_size, vocab_size), requires_grad = True)
+    #####################################################################
+    #samples = Variable(torch.Tensor(seq_len, batch_size, vocab_size), requires_grad = True)
+    samples = Variable(torch.Tensor(seq_len, batch_size, vocab_size))
 
     if(use_cuda):
         samples = samples.cuda()
