@@ -426,7 +426,7 @@ def main(opt):
 
             gen_data_iter.reset()
 
-            print('Batch [{}] Discriminator Loss at step and epoch {}: {}'.format(total_batch, b, D_loss.data[0]))
+            #print('Batch [{}] Discriminator Loss at step and epoch {}: {}'.format(total_batch, b, D_loss.data[0]))
 
         if visualize:
             adversarial_D_loss_logger.log(total_batch, D_loss.data[0])
