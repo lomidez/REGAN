@@ -190,8 +190,8 @@ def sample_one_hot(theta_prime, batch_size, seq_len, vocab_size, use_cuda):
     theta_prime = theta_prime.view(seq_len, batch_size, vocab_size)
     for i in range(seq_len):
         x = theta_prime[i].multinomial(1)
-        #one_hot = Variable(torch.zeros((batch_size, vocab_size)).long(), requires_grad = True)
-        one_hot = Variable(torch.zeros((batch_size, vocab_size)).long())
+        one_hot = Variable(torch.zeros((batch_size, vocab_size)).long(), requires_grad = True)
+        #one_hot = Variable(torch.zeros((batch_size, vocab_size)).long())
         if use_cuda:
             one_hot = one_hot.cuda()
         samples[i] = one_hot.scatter_(1, x, 1)
