@@ -245,9 +245,12 @@ def c_phi_out(GD, c_phi_hat, theta_prime, discriminator, temperature=0.1, eta=No
 
     if GD == "REINFORCE":
         if cuda:
-            return Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True).cuda(), Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True).cuda()
+            ##############################################################################
+            #return Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True).cuda(), Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True).cuda()
+            return Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True).cuda(), Variable(torch.zeros((BATCH_SIZE,2))).cuda()
         else:
-            return Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True), Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True)
+            #return Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True), Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True)
+            return Variable(torch.zeros((BATCH_SIZE,2)), requires_grad=True), Variable(torch.zeros((BATCH_SIZE,2)))
 
     if GD == 'REBAR':
         assert eta is not None
