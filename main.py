@@ -411,9 +411,11 @@ def main(opt):
                     fake_target = fake_target.cuda()
                     real_data = real_data.cuda()
                     fake_data = fake_data.cuda()
-                
-                real_pred = torch.exp(discriminator(real_data)[:, 1])
-                fake_pred = torch.exp(discriminator(fake_data)[:, 1])
+                #######################################################
+                #real_pred = torch.exp(discriminator(real_data)[:, 1])
+                real_pred = torch.exp(discriminator(real_data))
+                #fake_pred = torch.exp(discriminator(fake_data)[:, 1])
+                fake_pred = torch.exp(discriminator(fake_data))
 
                 D_real_loss = dis_criterion_bce(real_pred, real_target)
                 D_fake_loss = dis_criterion_bce(fake_pred, fake_target)
