@@ -65,7 +65,9 @@ PRE_EPOCH_DIS = 0 if isDebug else 5
 PRE_ITER_DIS = 0 if isDebug else 3
 
 # ADVERSARIAL TRAINING
-GD = "RELAX" # "MLE" or REINFORCE" or "REBAR" or "RELAX"
+#################################
+#GD = "RELAX"
+GD = "REINFORCE" # "MLE" or REINFORCE" or "REBAR" or "RELAX"
 if GD == "MLE":
     TOTAL_EPOCHS = 0
 CHECK_VARIANCE = True
@@ -320,8 +322,8 @@ def main(opt):
                 for j in range(BATCH_SIZE):
                     generator.zero_grad()
                     ##############################################################
-                    #c_phi_z_ori[j,1].backward(retain_graph=True)
-                    c_phi_z_ori[j,1].backward()
+                    c_phi_z_ori[j,1].backward(retain_graph=True)
+                    #c_phi_z_ori[j,1].backward()
                     j_grads = []
                     for p in generator.parameters():
                         j_grads.append(p.grad.clone())
@@ -332,8 +334,8 @@ def main(opt):
                 for j in range(BATCH_SIZE):
                     generator.zero_grad()
                     ##############################################################
-                    #c_phi_z_tilde_ori[j,1].backward(retain_graph=True)
-                    c_phi_z_tilde_ori[j,1].backward()
+                    c_phi_z_tilde_ori[j,1].backward(retain_graph=True)
+                    #c_phi_z_tilde_ori[j,1].backward()
                     j_grads = []
                     for p in generator.parameters():
                         j_grads.append(-1*p.grad.clone())
