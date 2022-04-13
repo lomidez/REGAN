@@ -319,7 +319,9 @@ def main(opt):
                 partial_grads = []
                 for j in range(BATCH_SIZE):
                     generator.zero_grad()
-                    c_phi_z_ori[j,1].backward(retain_graph=True)
+                    ##############################################################
+                    #c_phi_z_ori[j,1].backward(retain_graph=True)
+                    c_phi_z_ori[j,1].backward()
                     j_grads = []
                     for p in generator.parameters():
                         j_grads.append(p.grad.clone())
@@ -329,7 +331,9 @@ def main(opt):
                 partial_grads = []
                 for j in range(BATCH_SIZE):
                     generator.zero_grad()
-                    c_phi_z_tilde_ori[j,1].backward(retain_graph=True)
+                    ##############################################################
+                    #c_phi_z_tilde_ori[j,1].backward(retain_graph=True)
+                    c_phi_z_tilde_ori[j,1].backward()
                     j_grads = []
                     for p in generator.parameters():
                         j_grads.append(-1*p.grad.clone())
