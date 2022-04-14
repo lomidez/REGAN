@@ -34,9 +34,8 @@ SEED = 88
 random.seed(SEED)
 np.random.seed(SEED)
 torch.manual_seed(SEED)
-###############################################
-#BATCH_SIZE = 128
-BATCH_SIZE = 32
+
+BATCH_SIZE = 128
 
 # DATA
 GENERATED_NUM = 10000
